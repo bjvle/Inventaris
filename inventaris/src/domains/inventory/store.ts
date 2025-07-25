@@ -34,12 +34,7 @@ const inventory = ref<Product[]>([]);
 
 // Getters
 export const getAllProducts = computed(() => inventory.value);
-export const getProductById = (id: number | undefined) => computed(() => {
-    if (typeof id == 'number') {
-        return inventory.value.find(product => product.id === id);
-    }
-    return inventory.value.find(() => true);
-});
+export const getProductById = (id: number) => computed(() => inventory.value.find(product => product.id === id));
 export const getOrderList = computed(() => inventory.value.filter(product => product.actualAmount < product.minimumAmount));
 
 // Actions

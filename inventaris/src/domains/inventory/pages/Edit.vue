@@ -19,6 +19,6 @@ const update = (product:Product) => {
 
 <h1>Editing item: {{oldProduct?.name}}</h1>
 
-<ProductForm :product="oldProduct" @submitNewProduct="update($event)"/>
+<ProductForm v-if="oldProduct" :product="oldProduct" @submitNewProduct="update($event)"/>
 
 </template>
