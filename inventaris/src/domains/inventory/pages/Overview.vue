@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 
-import { getAllProducts, addProduct} from "../store.js";
+import { getAllProducts} from "../store.ts";
 import ProductTable from "../components/ProductTable.vue";
 
 const products = getAllProducts;

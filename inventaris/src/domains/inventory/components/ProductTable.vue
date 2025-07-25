@@ -1,13 +1,13 @@
-<script setup>
-import {computed} from 'vue'
+<script setup lang="ts">
+
 import {useRouter} from 'vue-router'
 import {deleteItemByID} from "../store.js";
 
 const router = useRouter()
 
-const products = defineModel("products")
+defineModel("products")
 
-const editItem = (id) => {
+const editItem = (id:number) => {
   router.push({ path: `/edit:${id}`})
 }
 

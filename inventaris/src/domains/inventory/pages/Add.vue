@@ -1,13 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
-import { getAllProducts, addProduct} from "../store.js";
+import { addProduct, type Product} from "../store.ts";
 import ProductForm from "../components/ProductForm.vue";
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const product = ref({ name: '', price: null, actualAmount: null, minimumAmount: null });
+const product = ref<Product>({ name: '', price: 0, actualAmount: 0, minimumAmount: 0 });
 
 </script>
 
@@ -15,6 +15,6 @@ const product = ref({ name: '', price: null, actualAmount: null, minimumAmount: 
 
 <h3> Add the name, price and amount of the product: </h3>
 
-<ProductForm :product="product" @submitNewProduct="addProduct($event); router.push({ path: '/overview' });"/>
+<ProductForm :product="product" @submitNewProduct="addProduct($event); router.push({ name: 'inventory.overview' });"/>
 
 </template>

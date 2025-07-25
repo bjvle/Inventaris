@@ -1,19 +1,18 @@
-<script setup>
-import {ref, computed} from 'vue'
-import { useRouter, useRoute } from 'vue-router';
+<script setup lang="ts">
+import { ref } from 'vue'
+//import type { Ref } from 'vue'
+import { useRouter } from 'vue-router';
+import type { Product } from '../store';
 
-const route = useRoute();
 const router = useRouter();
 
-const oldProduct = defineProps({
-  product: Object,
-})
+const { product } = defineProps<{product: Product}>()
 
-const newProduct = ref({...oldProduct.product});
+const newProduct =  ref({...product});
 
 const emit = defineEmits(['submitNewProduct']);
 
-const emitSubmit = (newProduct) => {
+const emitSubmit = (newProduct:{name:string,price:number,actualAmount:number,minimumAmount:number}) => {
     emit('submitNewProduct', newProduct);
 };
 
